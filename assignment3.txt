@@ -46,7 +46,7 @@ here <tweet_id>=1
   SELECT t.content
   FROM comments c
   JOIN tweets t ON c.tweet_id = t.tweet_id
-  WHERE t.parent_comment_id = <tweet_id>;
+  WHERE c.parent_comment_id =2;
 here <tweet_id>=2
 
 
