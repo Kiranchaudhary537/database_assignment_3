@@ -1,3 +1,4 @@
+-- All Tables 
 -- users table
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
@@ -55,7 +56,9 @@ CREATE TABLE followers (
   FOREIGN KEY (follower_user_id) REFERENCES users(user_id)
 );
 
------  data 
+
+-----  Data for tables
+
 -- Insert data into Users table
 INSERT INTO users (user_id, name, email, phone_number)
 VALUES 
@@ -91,7 +94,10 @@ INSERT INTO comments (comment_id, tweet_id, parent_comment_id)
 VALUES 
   (1, 1, NULL), (2, 2, NULL),(3,3,2);
 
---- query
+
+
+--- All query
+
 -- 1. Fetch all users name from database.
   SELECT name FROM users;
 
