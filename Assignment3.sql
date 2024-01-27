@@ -2,9 +2,9 @@
 -- users table
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(20) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  phone_number VARCHAR(20) UNIQUE NOT NULL
+  phone_number VARCHAR(10) UNIQUE NOT NULL
 );
 
 -- tweets table 
