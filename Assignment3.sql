@@ -127,7 +127,7 @@ VALUES
   SELECT t.content
   FROM comments c
   JOIN tweets t ON c.tweet_id = t.tweet_id
-  WHERE t.parent_comment_id =2;
+  WHERE c.parent_comment_id =2;
 
 
 -- 8. Fetch user’s timeline (All tweets from users whom I am following with tweet content and user name who has tweeted it)
