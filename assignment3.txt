@@ -1,0 +1,60 @@
+1. Fetch all users name from database.
+    
+    SELECT name FROM users;
+
+2. Fetch all tweets of user by user id most recent tweets first.
+
+   SELECT tweet_id, content, tweeted_at
+   FROM tweets
+   WHERE user_id = <user_id>
+   ORDER BY tweeted_at DESC;
+here <user_id>=1
+
+
+3. Fetch like count of particular tweet by tweet id.
+  
+  SELECT COUNT(*) AS total_likes_count
+  FROM likes
+  WHERE tweet_id = <tweet_id>;
+here <tweet_id>=1
+
+4. Fetch retweet count of particular tweet by tweet id.
+
+  SELECT COUNT(*) AS total_retweet_count
+  FROM retweets
+  WHERE original_tweet_id = <tweet_id>;
+here <tweet_id>=1;
+
+5. Fetch comment count of particular tweet by tweet id.
+
+  SELECT COUNT(*) AS total_comment_count
+  FROM comments
+  WHERE tweet_id = <tweet_id>;
+here <tweet_id>=2
+
+
+6. Fetch all user’s name who have retweeted particular tweet by tweet id.
+
+  SELECT u.name
+  FROM retweets r
+  JOIN users u ON r.user_id = u.user_id
+  WHERE r.original_tweet_id = <tweet_id>;
+here <tweet_id>=1
+
+7. Fetch all commented tweet’s content for particular tweet by tweet id.
+
+  SELECT t.content
+  FROM comments c
+  JOIN tweets t ON c.tweet_id = t.tweet_id
+  WHERE t.parent_comment_id = <tweet_id>;
+here <tweet_id>=2
+
+
+8. Fetch user’s timeline (All tweets from users whom I am following with tweet content and user name who has tweeted it)
+
+  SELECT t.tweet_id, t.content, u.name AS user_name
+  FROM tweets t
+  JOIN users u ON t.user_id = u.user_id  
+  WHERE u.user_id in (SELECT following_user_id from followers WHERE follower_user_id=<user_id>) 
+  ORDER BY t.tweeted_at DESC;
+here <user_id>=1
